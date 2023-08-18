@@ -17,12 +17,12 @@ void print_triangle(int size)
 			{
 				if (i < x)
 					_putchar(' ');
-				else 
+				else
 					_putchar('#');
 			}
 			_putchar('\n');
 		}
 	}
-	else 
+	else
 		_putchar('\n');
 }
