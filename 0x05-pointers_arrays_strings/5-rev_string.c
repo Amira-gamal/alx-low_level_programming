@@ -11,7 +11,7 @@ void rev_string(char *s)
 
 	while (x)
 	{
-		x++
+		x++;
 	}
 	x = x - 1;
 	while (x)
