@@ -24,7 +24,7 @@ int _sqrt_recursion(int n)
  *Return: the resulting square root
  */
 
-int _squr(int i, int n)
+int _squr(int n, int i)
 {
 	if (i * i > n)
 		return (-1);
