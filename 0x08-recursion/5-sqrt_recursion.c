@@ -30,5 +30,5 @@ int _squr(int i, int n)
 		return (-1);
 	if (i * i == n)
 		return (i);
-	return (squr(n, i + 1));
+	return (_squr(n, i + 1));
 }
