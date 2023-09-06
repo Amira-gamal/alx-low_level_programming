@@ -11,7 +11,7 @@
 char *str_concat(char *s1, char *s2)
 {
 	int x, y, i;
-	char *conStr;
+	char *s;
 
 	i = 0;
 	x = 0;
@@ -31,7 +31,7 @@ char *str_concat(char *s1, char *s2)
 	if (s == NULL)
 		return (NULL);
 	for (i = 0; i < x; i++)
-		*(conStr + i) = *(s1 + i);
+		*(s + i) = *(s1 + i);
 	for (i = x; i < (x + y); i++)
 		*(s + i) = *(s2 + i - x);
 	return (s);
