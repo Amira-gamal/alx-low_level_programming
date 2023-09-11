@@ -1,36 +1,38 @@
 #include "dog.h"
 #include <stdlib.h>
-
 /**
- * new_dog - creates a new dog structure
- * @name: Dog's name
- * @age: Dog's age
- * @owner: Dog's owner
- * Return: returns a pointer to newly created dog structure
-*/
-
+  * new_dog - creates a new struct of type dog
+  * @name: struct parameter name
+  * @age: struct parameter age
+  * @owner: struct parameter owner
+  * Return: returns pointer to buffer of datatype dog
+  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int nlen y = 0, olen x = 0, i;
-	dog_t *bobby;
+	int nlen, olen, i;
+	dog_t *doggy;
 
-	for (name[y++])
+	nlen = olen = 0;
+	while (name[nlen++])
 		;
-	for (owner[x++])
+	while (owner[olen++])
 		;
-	bobby = malloc(sizeof(dog_t));
-	if (bobby == NULL)
+	doggy = malloc(sizeof(dog_t));
+	if (doggy == NULL)
 		return (NULL);
-	bobby->name = malloc(y * sizeof(bobby->name));
-	if (bobby == NULL)
+
+	doggy->name = malloc(nlen * sizeof(doggy->name));
+	if (doggy == NULL)
 		return (NULL);
-	for (i = 0; i < y; i++)
-		bobby->name[i] = name[i];
-	bobby->age = age;
-	bobby->owner = malloc(olen * sizeof(bobby->owner));
-	if (bobby == NULL)
+	for (i = 0; i < nlen; i++)
+		doggy->name[i] = name[i];
+
+	doggy->age = age;
+
+	doggy->owner = malloc(olen * sizeof(doggy->owner));
+	if (doggy == NULL)
 		return (NULL);
-	for (i = 0; i < x; i++)
-		bobby->owner[i] = owner[i];
-	return (bobby);
+	for (i = 0; i < olen; i++)
+		doggy->owner[i] = owner[i];
+	return (doggy);
 }
