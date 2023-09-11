@@ -1,4 +1,5 @@
 #include "dog.h"
+#include <stdlib.h>
 
 /**
  * new_dog - creates a new dog structure
@@ -13,9 +14,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 	int nlen y = 0, olen x = 0, i;
 	dog_t *bobby;
 
-	while (name[y++])
+	for (y = 0; name[y] != '\0'; y++)
 		;
-	while (owner[x++)
+	for (x = 0; owner[x] != '\0'; x++)
 		;
 	bobby = malloc(sizeof(dog_t));
 	if (bobby == NULL)
