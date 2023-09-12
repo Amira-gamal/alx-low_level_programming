@@ -1,37 +1,49 @@
-#include "dog.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include "dog.h"
+
 /**
-  * new_dog - creates a new struct of type dog
-  * @name: struct parameter name
-  * @age: struct parameter age
-  * @owner: struct parameter owner
-  * Return: returns pointer to buffer of datatype dog
-  */
+ * new_dog - creates a new dog
+ * @name: dog's name
+ * @age: dog's age
+ * @owner: dog's owner
+ * Return: a pointer to the structure
+ */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int nlen y, olen x, i;
-	dog_t *poppy;
+	int x, y, m;
+	dog_t *popy;
 
-	for (y = 0; name[y]; y++)
-		;
-	for (x = 0; owner[x]; x++)
-		;
-	poppy = malloc(sizeof(dog_t));
-	if (poppy == NULL)
+	popy = malloc(sizeof(dog_t));
+
+	if (popy == NULL)
+	{
+		free(popy);
 		return (NULL);
+	}
+	while (name[x])
+		x++;
+	while (owner[y])
+		y++;
+	popy->name = malloc(x + 1);
+	popy->owner = malloc(y + 1);
 
-	poppy->name = malloc(y * sizeof(poppy->name));
-	if (poppy == NULL)
+	if (popy->name == NULL || popy->owner == NULL)
+	{
+		free(popy->name), free(popy->owner), free(popy);
 		return (NULL);
-	for (i = 0; i < y; i++)
-		poppy->name[i] = name[i];
-
-	poppy->age = age;
-
-	poppy->owner = malloc(x * sizeof(poppy->owner));
-	if (poppy == NULL)
-		return (NULL);
-	for (i = 0; i < x; i++)
-		poppy->owner[i] = owner[i];
-	return (poppy);
+	}
+	for (m = 0; m < x; m++)
+	{
+		popy->name[m] = name[m];
+	}
+	p->name[m] = '\0';
+	for (m = 0; m < y; m++)
+	{
+		popy->owner[m] = owner[m];
+	}
+	popy->owner[m] = '\0';
+	popy->age = age;
+	return (popy);
 }
