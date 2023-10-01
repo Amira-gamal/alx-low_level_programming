@@ -1,33 +1,40 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
- * A program that prints all possible different combinations of two two-digit
- * Return: 0 if success.
+ * main - Prints multiple combinations
+ * Description: Write a program that prints all possible
+ * Return: 0
 */
+
 int main(void)
 {
-	int i = 0, x;
+	int i, x, y, z;
 
-	for (i = 0; i <= 99; i++)
+	for (i = '0'; i <= '9'; i++)
 	{
-		for (x = i; x <= 99; x++)
+		for (x = '0'; x <= '9'; x++)
 		{
-			if (i != x)
+			for (y = '0'; y <= '9'; y++)
 			{
-				putchar((i / 10) + 48);
-				putchar((i % 10) + 48);
-				putchar(' ');
-				putchar((x / 10) + 48);
-				putchar((x % 10) + 48);
-				if (i == 98 && x == 99)
+				for (z = '0'; z <= '9'; z++)
 				{
-					continue;
+					if ((i < y) || (i == y && x < z))
+					{
+						putchar(i);
+						putchar(x);
+						putchar(' ');
+						putchar(y);
+						putchar(z);
+					if (!(i == '9' && x == '8'))
+					{
+						putchar(',');
+						putchar(' ');
+					}
+					}
 				}
-				putchar(',');
-				putchar(' ');
 			}
 		}
 	}
+	putchar('\n');
 	return (0);
 }
