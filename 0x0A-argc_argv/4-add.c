@@ -7,22 +7,33 @@
  * @argv: input
  * Return: Always 0 (Success)
  */
+
 int main(int argc, char *argv[])
 {
-	int i, j, add = 0;
+	int sum;
+	int count;
+	int i;
 
-	for (i = 1; i < argc; i++)
+	count = 1;
+	sum = 0;
+	if (argc == 1)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		printf("0\n");
+		return (0);
+	}
+	while (count < argc)
+	{
+		for (i = 0; argv[count][i] != '\0'; i++)
 		{
-			if (!isdigit(argv[i][j]))
+			if (!(isdigit(argv[count][i])))
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-		add += atoi(argv[i]);
+		sum += atoi(argv[count]);
+		count++;
 	}
-	printf("%d\n", add);
+	printf("%d\n", sum);
 	return (0);
 }
