@@ -6,34 +6,24 @@
  * @argc: input
  * @argv: input
  * Return: Always 0 (Success)
- */
+**/
 
 int main(int argc, char *argv[])
 {
-	int sum;
-	int count;
-	int i;
+	int i, x, y = 0;
 
-	count = 1;
-	sum = 0;
-	if (argc == 1)
+	for (i = 1; i < argc; i++)
 	{
-		printf("0\n");
-		return (0);
-	}
-	while (count < argc)
-	{
-		for (i = 0; argv[count][i] != '\0'; i++)
+		for(x = 0; argv[i][x] != '\0'; x++)
 		{
-			if (!(isdigit(argv[count][i])))
+			if (!isdigit(argv[i][x]))
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-		sum += atoi(argv[count]);
-		count++;
+		y += atoi(argv[i]);
 	}
-	printf("%d\n", sum);
+	printf("%d\n", y);
 	return (0);
 }
