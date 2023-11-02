@@ -12,38 +12,31 @@
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *sout;
-	unsigned int ls1, ls2, lsout, i;
+	char *ptr;
+	unsigned int i = 0, x = 0, y, z;
 
 	if (s1 == NULL)
 		s1 = "";
-
 	if (s2 == NULL)
 		s2 = "";
-
-	for (ls1 = 0; s1[ls1] != '\0'; ls1++)
-		;
-
-	for (ls2 = 0; s2[ls2] != '\0'; ls2++)
-		;
-
-	if (n > ls2)
-		n = ls2;
-
-	lsout = ls1 + n;
-
-	sout = malloc(lsout + 1);
-
-	if (sout == NULL)
+	while (s1[i] != '\0)
+		i++;
+	while (s2[x] != '\0')
+		x++;
+	if (n > x)
+		n = x;
+	y = i + n;
+	ptr = malloc(y + 1);
+	if (ptr == NULL)
 		return (NULL);
 
-	for (i = 0; i < lsout; i++)
-		if (i < ls1)
-			sout[i] = s1[i];
+	for (z = 0; z < y; z++)
+		if (z < i)
+			ptr[z] = s1[z];
 		else
-			sout[i] = s2[i - ls1];
+			ptr[z] = s2[z - i];
 
-	sout[i] = '\0';
+	ptr[z] = '\0';
 
-	return (sout);
+	return (ptr);
 }
