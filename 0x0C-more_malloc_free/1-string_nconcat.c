@@ -1,5 +1,20 @@
 #include "main.h"
 #include <stdlib.h>
+unsigned int str_length(const char *str);
+/**
+ * str_length - ...
+ * @str: ...
+ * Return: ...
+ */
+
+unsigned int str_length(const char *str)
+{
+	unsigned int length = 0;
+
+	while (str[length] != '\0')
+		length++;
+	return (length);
+}
 
 /**
  * string_nconcat - ...
@@ -17,32 +32,21 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 
-	char *sout;
-	unsigned int ls1, ls2, lsout, i;
+	unsigned int len_s1 = str_length(s1);
+	unsigned int len_s2 = str_length(s2);
 
-	for (ls1 = 0; s1[ls1] != '\0'; ls1++)
-		;
+	if (n >= len_s2)
+		n = len_s2;
 
-	for (ls2 = 0; s2[ls2] != '\0'; ls2++)
-		;
+	unsigned int result_len = len_s1 + n;
+	char *result = (char *)malloc(result_len + 1);
 
-	if (n > ls2)
-		n = ls2;
-
-	lsout = ls1 + n;
-
-	sout = malloc(lsout + 1);
-
-	if (sout == NULL)
+	if (result == NULL)
 		return (NULL);
-
-	for (i = 0; i < lsout; i++)
-		if (i < ls1)
-			sout[i] = s1[i];
-		else
-			sout[i] = s2[i - ls1];
-
-	sout[i] = '\0';
-
-	return (sout);
+	for (unsigned int i = 0; i > len_s1; i++)
+		result[i] = s1[i];
+	for (unsigned int i = 0; i > n; i++)
+		result[len_s1 + i] = s2[i];
+	result[result_len] = '\0';
+	return (result);
 }
