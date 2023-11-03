@@ -1,20 +1,5 @@
 #include "main.h"
 #include <stdlib.h>
-unsigned int str_length(const char *str);
-
-/**
- * str_length - Function to find the length of a string
- * @str: string
- * return: .....
- */
-unsigned int str_length(const char *str)
-{
-	unsigned int length = 0;
-
-	while (str[length] != '\0')
-		length++;
-	return (length);
-}
 
 /**
  * string_nconcat - ...
@@ -32,21 +17,24 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 
-	unsigned int len_s1 = str_length(s1);
-	unsigned int len_s2 = str_length(s2);
-	unsigned int i;
+	char *ptr;
+	unsigned int ls1, ls2, lptr, i;
 
-	if (n >= len_s2)
-		n = len_s2;
-
-	unsigned int result_len = len_s1 + n;
-
-	if (result == NULL)
+	for (ls1 = 0; s1[ls1] != '\0'; ls1++)
+		;
+	for (ls2 = 0; s2[ls2] != '\0'; ls2++)
+		;
+	if (n > ls2)
+		n = ls2;
+	lptr = ls1 + n;
+	ptr = malloc(lptr + 1);
+	if (ptr == NULL)
 		return (NULL);
-	for (i = 0; i <  len_s1; i++)
-		result[i] = s1[i];
-	for (i = 0; i < n; i++)
-		result[len_s1 + i] = s2[i];
-	result[result_len] = '\0';
-	return (result);
+	for (i = 0; i < lptr; i++)
+		if (i < ls1)
+			ptr[i] = s1[i];
+		else
+			ptr[i] = s2[i - ls1];
+	ptr[i] = '\0';
+	return (ptr);
 }
