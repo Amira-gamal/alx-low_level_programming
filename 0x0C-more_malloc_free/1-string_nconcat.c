@@ -1,5 +1,20 @@
 #include "main.h"
 #include <stdlib.h>
+unsigned int str_length(const char *str);
+
+/**
+ * str_length - Function to find the length of a string
+ * @str: string
+ * return: .....
+ */
+unsigned int str_length(const char *str)
+{
+	unsigned int length = 0;
+
+	while (str[length] != '\0')
+		length++;
+	return (length);
+}
 
 /**
  * string_nconcat - ...
