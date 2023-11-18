@@ -6,8 +6,8 @@ section .text
     extern printf
 
 main:
-    mov rdi, hello ; First argument: format string
-    call printf    ; Call printf
-    mov rax, 0     ; Return 0 from main
+    mov rdi, hello`
+    call printf
+    mov rax, 0
     ret
 
