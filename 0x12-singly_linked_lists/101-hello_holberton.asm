@@ -6,7 +6,7 @@ section .text
     extern printf
 
 main:
-    mov rdi, hello`
+    mov rdi, hello
     call printf
     mov rax, 0
     ret
