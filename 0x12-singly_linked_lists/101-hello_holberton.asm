@@ -11,3 +11,6 @@ main:
     mov rax, 0
     ret
 
+    mov eax, 0
+    ret
+
