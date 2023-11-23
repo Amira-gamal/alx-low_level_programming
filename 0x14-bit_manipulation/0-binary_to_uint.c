@@ -11,14 +11,12 @@ unsigned int binary_to_uint(const char *b)
 
 	if (b == NULL)
 		return (0);
-	while ((current_bit = *b++) != '\0')
+	while ((current_char = *b) != '\0')
 	{
-		if (current_bit == '0')
-			result <<= 1;
-		else if (current_bit == '1')
-			result = (result << 1) | 1;
-		else
+		if (current_char != '0' && current_char != '1')
 			return (0);
+		 result = (result << 1) + (current_char - '0');
+		 b++;
 	}
 	return (result);
 }
