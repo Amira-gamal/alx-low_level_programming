@@ -9,19 +9,19 @@
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int o, w, len = 0;
+	int op, bytes_written, i = 0;
 
 	if (filename == NULL)
 		return (-1);
 	if (text_content != NULL)
 	{
-		for (len = 0; text_content[len];)
-			len++;
+		for (i = 0; text_content[i]; i++)
+			;
 	}
-	o = open(filename, O_WRONLY | O_APPEND);
-	w = write(o, text_content, len);
-	if (o == -1 || w == -1)
+	op = open(filename, O_WRONLY | O_APPEND);
+	bytes_written = write(op, text_content, i);
+	if (op == -1 || bytes_written == -1)
 		return (-1);
-	close(o);
+	close(op);
 	return (1);
 }
