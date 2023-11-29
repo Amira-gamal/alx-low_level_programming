@@ -2,15 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *buffer(char *file);
+char *_buffer(char *file);
 void file(int fd);
 
 /**
- * buffer - Allocates 1024 bytes for a buffer.
+ * _buffer - Allocates 1024 bytes for a buffer.
  * @file: The name of the file buffer is storing chars for.
  * Return: A pointer to the newly-allocated buffer.
  */
-char *buffer(char *file)
+char *_buffer(char *file)
 {
 	char *buf;
 
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	buffer = buffer(argv[2]);
+	buffer = _buffer(argv[2]);
 	f = open(argv[1], O_RDONLY);
 	r = read(f, buffer, 1024);
 	t = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
