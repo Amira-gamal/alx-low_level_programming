@@ -25,10 +25,10 @@ char *_buffer(char *file)
 }
 
 /**
- * close - Closes file.
+ * _close - Closes file.
  * @fd: The file descriptor.
  */
-void close(int fd)
+void _close(int fd)
 {
 	int x;
 
@@ -80,15 +80,14 @@ int main(int argc, char *argv[])
 			free(buffer);
 			exit(99);
 		}
-
 		r = read(f, buffer, 1024);
 		t = open(argv[2], O_WRONLY | O_APPEND);
 
 	} while (r > 0);
 
 	free(buffer);
-	close(f);
-	close(t);
+	_close(f);
+	_close(t);
 
 	return (0);
 }
